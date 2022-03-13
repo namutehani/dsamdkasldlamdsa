@@ -51,7 +51,7 @@ async def channel_post(client: Client, message: Message):
     paylas = "👥  Kitabı paylaş  👥"
     buttons_markup = [
         [types.InlineKeyboardButton(bosluk, url=f"{link}")],
-        [types.InlineKeyboardButton(how_to_download,url=f"https://bit.ly/tayfapdf")],
+        [types.InlineKeyboardButton(how_to_download,url=f"https://bit.ly/pdfyardim")],
         [types.InlineKeyboardButton(paylas, url=f'https://telegram.me/share/url?url={link}')]
         ]
     await client.send_message(send_id,f"{yazi}",parse_mode="html", reply_markup = types.InlineKeyboardMarkup(buttons_markup))
