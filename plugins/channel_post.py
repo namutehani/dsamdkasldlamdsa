@@ -55,7 +55,7 @@ async def channel_post(client: Client, message: Message):
         [types.InlineKeyboardButton(paylas, url=f'https://telegram.me/share/url?url={link}')]
         ]
     await client.send_message(send_id,f"{yazi}",parse_mode="html", reply_markup = types.InlineKeyboardMarkup(buttons_markup))
-    await client.send_message(send_id1,f"{yazi}",parse_mode="html", reply_markup = types.InlineKeyboardMarkup(buttons_markup))
+  # await client.send_message(send_id1,f"{yazi}",parse_mode="html", reply_markup = types.InlineKeyboardMarkup(buttons_markup))
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(bosluk, url=f'{link}')]])
     await reply_text.edit(f"<b>Link burada:</b>\n{link}", reply_markup=reply_markup, disable_web_page_preview = True)
  #   if not DISABLE_CHANNEL_BUTTON:
