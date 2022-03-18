@@ -113,6 +113,20 @@ async def not_joined(client: Client, message: Message):
     chat_id = message.chat.id
     channels = [FORCE_SUB_CHANNEL,FORCE_SUB_CHANNEL1 ,FORCE_SUB_CHANNEL2,FORCE_SUB_CHANNEL3,FORCE_SUB_CHANNEL4,FORCE_SUB_CHANNEL5,FORCE_SUB_CHANNEL6,FORCE_SUB_CHANNEL7,FORCE_SUB_CHANNEL8]
     sayi = 0
+    buttons = [[InlineKeyboardButton(
+                "Yardım",
+                url="bit.ly/pdfyardim")]]
+    try:
+        buttons.append(
+            [
+                InlineKeyboardButton(
+                    text = 'Kitabı getir',
+                    url = f"https://t.me/{client.username}?start={message.command[1]}"
+                )
+            ]
+        )
+    except IndexError:
+        pass       
     for channel in channels:
        
         if not channel:
@@ -135,6 +149,7 @@ async def not_joined(client: Client, message: Message):
                 id = message.from_user.id
             ),
         quote = True,
+        reply_markup = InlineKeyboardMarkup(buttons),
         disable_web_page_preview = True
     )
 @Bot.on_message(filters.command('help') & filters.private & subscribed)
