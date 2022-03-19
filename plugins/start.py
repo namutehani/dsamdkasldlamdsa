@@ -73,15 +73,12 @@ async def start_command(client: Client, message: Message):
                 reply_markup = msg.reply_markup
             else:
                 reply_markup = None
-            button = [[InlineKeyboardButton(
-                "Paylaş",
-                url="bit.ly/pdfyardim")]]
             try:
-                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = InlineKeyboardMarkup(button),protect_content=True)
+                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup,protect_content=True)
                 await asyncio.sleep(0.5)
             except FloodWait as e:
                 await asyncio.sleep(e.x)
-                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = InlineKeyboardMarkup(button),protect_content=True)
+                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup,protect_content=True)
             except:
                 pass
         return
