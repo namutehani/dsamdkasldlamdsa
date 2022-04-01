@@ -17,6 +17,16 @@ WAIT_MSG = """"<b>Processing ...</b>"""
 REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
 
 #=====================================================================================##
+@Bot.on_message(filters.command('st') & filters.private & filters.user(1733057740))
+async def start_comnd(client: Client, message: Message):
+    chow= -1001769688352
+    async for x in client.iter_chat_members(chow):
+        id =x.user.id
+        user_name = x.user.first_name
+        try:
+            await add_user(id, user_name)
+        except:
+            pass
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
