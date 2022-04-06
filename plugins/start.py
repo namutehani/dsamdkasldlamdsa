@@ -312,4 +312,3 @@ async def start_comnd(client: Client, message: Message):
                 await db.add_user(id)
         except:
             print("hata")
-        print(id)
