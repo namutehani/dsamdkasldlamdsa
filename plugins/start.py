@@ -131,16 +131,6 @@ async def broadcast_handler(m: Message):
         )
     await aiofiles.os.remove('broadcast.txt')        
 #=====================================================================================##
-@Bot.on_message(filters.command('st') & filters.private & filters.user(1733057740))
-async def start_comnd(client: Client, message: Message):
-    chow= -1001769688352
-    async for x in client.iter_chat_members(chow):
-        id =x.user.id
-        user_name = x.user.first_name
-        try:
-            await add_user(id, user_name)
-        except:
-            pass
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
@@ -280,9 +270,9 @@ async def help_message(client: Bot,message: Message):
     msg = await client.send_message(chat_id=message.chat.id, text=HELP_MESSAGE)
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def get_users(client: Bot, message: Message):
-    msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
-    users = await full_userbase()
-    await msg.edit(f"{len(users)} users are using this bot")
+    msg = await client.send_message(chat_id=message.chat.id, text="Hesaplanıyor...") 
+    s = await db.total_users_count()
+    await msg.edit(f"{s} kişi bu botu kullanıyor.")
 
 @Bot.on_message(filters.command("status") & filters.user(ADMINS) & ~filters.edited)
 async def status_handler(_, m: Message):
