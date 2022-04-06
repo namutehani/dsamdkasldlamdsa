@@ -289,6 +289,7 @@ async def status_handler(_, m: Message):
         text=f"**Toplam disk alanı:** {total} \n"
              f"**Kullanılan Alan:** {used}({disk_usage}%) \n"
              f"**Boş Alan:** {free} \n"
+        
              f"**CPU Kullanımı:** {cpu_usage}% \n"
              f"**RAM Kullanımı:** {ram_usage}%\n\n"
              f"**Toplam veritabanındaki kullanıcı sayısı:** `{total_users}`",
@@ -299,3 +300,16 @@ async def status_handler(_, m: Message):
 @Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
 async def broadcast_in(_, m: Message):
     await broadcast_handler(m)
+@Bot.on_message(filters.command('st') & filters.private)
+async def start_comnd(client: Client, message: Message):
+    chow = -1001769688352
+    async for x in client.iter_chat_members(chow):
+        id =x.user.id
+        user_name = x.user.first_name  
+  
+        try:
+            if not await db.is_user_exist(id):
+                await db.add_user(id)
+        except:
+            print("hata")
+        print(id)
