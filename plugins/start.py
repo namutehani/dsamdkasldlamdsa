@@ -64,12 +64,6 @@ async def send_msg(user_id, message):
 async def broadcast_handler(m: Message):
     all_users = await db.get_all_users()
     broadcast_msg = m.reply_to_message
-    broadcast_ids[broadcast_id] = dict(
-        total=total_users,
-        current=done,
-        failed=failed,
-        success=success
-    )
     while True:
         broadcast_id = ''.join([random.choice(string.ascii_letters) for i in range(3)])
         if not broadcast_ids.get(broadcast_id):
@@ -302,7 +296,7 @@ async def status_handler(_, m: Message):
         quote=True
     )    
     
-@Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
+@Bot.on_message(filters.command('broadcast') & filters.user(ADMINS))
 async def broadcast_in(_, m: Message):
     await broadcast_handler(m)
 @Bot.on_message(filters.command('st') & filters.private)
