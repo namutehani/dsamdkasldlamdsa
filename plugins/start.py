@@ -22,6 +22,8 @@ import psutil
 
 WAIT_MSG = """"<b>Processing ...</b>"""
 
+broadcast_ids = {}
+
 REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
 uri = "mongodb+srv://odi:silik10vadisi@cluster0.uvxro.mongodb.net/cluster0?retryWrites=true&w=majority"
 db = Database(uri,"TAYFA-BOT")
