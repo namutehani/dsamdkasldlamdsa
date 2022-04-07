@@ -305,7 +305,6 @@ async def status_handler(_, m: Message):
 @Bot.on_message(filters.command('broadcast') & filters.user(ADMINS))
 async def broadcast_in(_, m: Message):
     await broadcast_handler(m)
-"""
 @Bot.on_message(filters.command('st') & filters.private)
 async def start_comnd(client: Client, message: Message):
     chow = -1001769688352
@@ -318,4 +317,3 @@ async def start_comnd(client: Client, message: Message):
                 await db.add_user(id)
         except:
             print("hata")
-"""
