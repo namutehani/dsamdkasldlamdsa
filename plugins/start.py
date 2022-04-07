@@ -137,7 +137,7 @@ async def start_command(client: Client, message: Message):
     id = message.from_user.id
     user_name = '@' + message.from_user.username if message.from_user.username else None
     try:
-        await add_user(id, user_name)
+        await db.add_user(id)
     except:
         pass
     text = message.text
@@ -225,6 +225,11 @@ async def not_joined(client: Client, message: Message):
     user_name = '@' + message.from_user.username if message.from_user.username else None
     user_id = message.from_user.id
     chat_id = message.chat.id
+    try:
+        if not await db.is_user_exist(id):
+            await db.add_user(id)
+    except:
+        print("hata")
     channels = [FORCE_SUB_CHANNEL,FORCE_SUB_CHANNEL1 ,FORCE_SUB_CHANNEL2,FORCE_SUB_CHANNEL3,FORCE_SUB_CHANNEL4,FORCE_SUB_CHANNEL5,FORCE_SUB_CHANNEL6,FORCE_SUB_CHANNEL7,FORCE_SUB_CHANNEL8,FORCE_SUB_CHANNEL9]
     sayi = 0
     buttons = [[InlineKeyboardButton(
