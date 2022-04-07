@@ -137,9 +137,10 @@ async def start_command(client: Client, message: Message):
     id = message.from_user.id
     user_name = '@' + message.from_user.username if message.from_user.username else None
     try:
-        await db.add_user(id)
+        if not await db.is_user_exist(id):
+            await db.add_user(id)
     except:
-        pass
+        print("HATA")
     text = message.text
     if len(text)>7:
         try:
