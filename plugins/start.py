@@ -231,6 +231,8 @@ async def not_joined(client: Client, message: Message):
             await db.add_user(id)
     except:
         print("hata")
+    ms = await message.reply_text("Gerekli şartlar kontrol ediliyor...")
+    links = ""
     channels = [FORCE_SUB_CHANNEL,FORCE_SUB_CHANNEL1 ,FORCE_SUB_CHANNEL2,FORCE_SUB_CHANNEL3,FORCE_SUB_CHANNEL4,FORCE_SUB_CHANNEL5,FORCE_SUB_CHANNEL6,FORCE_SUB_CHANNEL7,FORCE_SUB_CHANNEL8,FORCE_SUB_CHANNEL9,FORCE_SUB_CHANNEL10]
     sayi = 0
     buttons = [[InlineKeyboardButton(
@@ -259,7 +261,10 @@ async def not_joined(client: Client, message: Message):
             sayi  += 1
             link = await client.create_chat_invite_link(channel)
             link1=link.invite_link
-            se = await client.send_message(chat_id=chat_id,text=f"{sayi}. Kanala katıl ✅.\n🔘 {link1}")
+            links += "\n"+"{sayi}".format(sayi=sayi)+ ". Kanala katıl ✅\n"+ link1 + "\n----------"
+             
+#          se = await client.send_message(chat_id=chat_id,text=f"{sayi}. Kanala katıl ✅.\n🔘 {link1}")
+    await client.edit_message_text(chat_id,ms.message_id,links)
     sw = await message.reply(
         text = FORCE_MSG.format(
                 first = message.from_user.first_name,
