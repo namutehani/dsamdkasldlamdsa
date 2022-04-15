@@ -323,11 +323,3 @@ async def start_comnd(client: Client, message: Message):
                 await db.add_user(id)
         except:
             print("hata")
-@Bot.on_message(filters.command('hebele') & filters.user(ADMINS))
-async def broadcast_n(_, m: Message):
-    cf = m
-    cg = cf.replace(" ","")
-    as = int(cg)
-    s = await db.get_user_data(as)
-    for u in s:
-        await c.reply_text(u,quote=True)
