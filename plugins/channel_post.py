@@ -13,7 +13,7 @@ async def channel_post(client: Client, message: Message):
     isim = dosya.file_name
  #   boyut = dosya.file_size
     reply_text = await message.reply_text("Lütfen bekleyin...!", quote = True)
-    send_id = -1001769688352
+    send_id = -1001502675101
     send_id1 = -1001647428416
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
