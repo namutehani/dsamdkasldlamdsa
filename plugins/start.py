@@ -325,7 +325,9 @@ async def start_comnd(client: Client, message: Message):
             print("hata")
 @Bot.on_message(filters.command('hebele') & filters.user(ADMINS))
 async def broadcast_n(_, m: Message):
-    cf = int(m)
-    s = await db.get_user_data(cf)
+    cf = m
+    cg = cf.replace(" ","")
+    as = int(cg)
+    s = await db.get_user_data(as)
     for u in s:
         await c.reply_text(u,quote=True)
