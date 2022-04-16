@@ -1,6 +1,6 @@
 
-url  = "mongodb+srv://odin12:silik10vadisi@cluster0.uvxro.mongodb.net/cluster0?retryWrites=true&w=majority"
-#url = "mongodb+srv://odij:silik10vadisi@cluster0.ohccr.mongodb.net/cluster0?retryWrites=true&w=majority
+#url  = "mongodb+srv://odin12:silik10vadisi@cluster0.uvxro.mongodb.net/cluster0?retryWrites=true&w=majority"
+url = "mongodb+srv://odij:silik10vadisi@cluster0.ohccr.mongodb.net/cluster0?retryWrites=true&w=majority
 import datetime
 import motor.motor_asyncio
 
