@@ -4,16 +4,16 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
 
 from bot import Bot
-from config import ADMINS, CHANNEL_ID, DISABLE_CHANNEL_BUTTON
+from config import ADMINS, CHANNEL_ID, DISABLE_CHANNEL_BUTTON, FORCE_SUB_CHANNEL9
 from helper_func import encode
 
 @Bot.on_message(filters.user(ADMINS) & filters.document)
 async def channel_post(client: Client, message: Message):
     dosya = message.document
     isim = dosya.file_name
+    send_id = FORCE_SUB_CHANNEL9
  #   boyut = dosya.file_size
     reply_text = await message.reply_text("Lütfen bekleyin...!", quote = True)
-    send_id = -1001502675101
     send_id1 = -1001647428416
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
